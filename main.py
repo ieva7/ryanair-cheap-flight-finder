@@ -1,7 +1,9 @@
-from data_retrieval import get_flight_info
+from data_retrieval import get_airport_codes, get_all_airport_info, get_destinations
 
 if __name__ == "__main__":
-    thing = get_flight_info()
-    print(thing)
+    
+    airports =  get_all_airport_info()
+    codes = get_airport_codes(airports)
+    print(codes)
 
 
