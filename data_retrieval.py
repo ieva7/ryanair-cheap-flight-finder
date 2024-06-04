@@ -18,3 +18,14 @@ def get_destinations(origin: str) -> list:
     """Returns all destinations using an origin airport code"""
 
     return requests.get(f"https://www.ryanair.com/api/views/locate/searchWidget/routes/en/airport/{origin}").json()
+
+
+def get_flight_pairs(airport_codes:list) -> list:
+    """Finds all destinations from every airport"""
+
+    flight_pairs = list()
+    for code in airport_codes:
+        destinations = get_destinations(code)
+        codes = get_airport_codes(destinations)
+        flight_pairs.append((code, dest_code) for dest_code in codes)
+    

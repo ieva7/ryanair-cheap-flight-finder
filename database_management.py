@@ -1,10 +1,10 @@
+"""Methods to do with the database"""
 import psycopg2
 from dotenv import dotenv_values
 
 
 def get_connected() -> None:
-    """Creates a museum database.
-    WARNING: will drop existing 'museum' database"""
+    """Connects to local psql database"""
 
     try:
         config = dotenv_values(""".env""")
@@ -12,8 +12,11 @@ def get_connected() -> None:
         database = config['database'],
         user=config['user'],
         password=config['password'],
-        host=config['host']
+        host=config['host'],
+        port=config['port']
         )
         return conn
     except psycopg2.DatabaseError:
         raise psycopg2.DatabaseError("Error connecting to database")
+    
+conn = get_connected()
