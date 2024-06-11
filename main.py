@@ -1,10 +1,11 @@
 import os
 import csv
-from data_retrieval import get_airport_codes, get_all_airport_info, get_destinations, get_flight_pairs
+from data_retrieval import get_airport_codes, get_all_airport_info, get_flight_pairs
 
 
 if __name__ == "__main__":
     
+    # checks if data is there already
     if not os.path.isfile('data.csv'):
         airports =  get_all_airport_info()
         codes = get_airport_codes(airports)
