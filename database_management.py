@@ -19,21 +19,10 @@ def get_connected() -> None:
     except psycopg2.DatabaseError:
         raise psycopg2.DatabaseError("Error connecting to database")
     
-
 conn = get_connected()
 
-def make_db(conn) -> None:
-    """Makes the database"""
 
-    with conn.cursor() as cur:
-        conn.autocommit = True
-        cur.execute("CREATE database flights;")
+def find_available_pairs(conn)
 
-def make_tables(conn) -> None:
 
-    with conn.cursor() as cur:
-        sql_file = open('DDL.sql','r')
-        cur.execute(sql_file.read())
-
-make_tables(conn)
 conn.close()
